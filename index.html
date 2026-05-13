@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Maple Math Academy — collaborative math and computer science tutoring. Strong foundations, clear teaching, $19/hour.">
+    <title>Maple Math Academy — Math & CS Tutoring</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true">
+        <span class="scroll-progress__fill"></span>
+    </div>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <nav class="navbar nav-over-hero" id="site-nav" aria-label="Primary">
+        <div class="navbar-container">
+            <a href="#" class="logo" aria-label="Maple Math Academy home">
+                <span class="logo-mark">
+                    <img class="logo-img" src="images/logo.png" width="80" height="80" alt="" decoding="async" fetchpriority="high">
+                </span>
+                <span class="logo-text">Maple Math Academy</span>
+            </a>
+
+            <div class="nav-center">
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#about" class="nav-link"><span class="nav-link-text">About</span></a></li>
+                    <li><a href="#tutors" class="nav-link"><span class="nav-link-text">Tutors</span></a></li>
+                    <li><a href="#subjects" class="nav-link"><span class="nav-link-text">Subjects</span></a></li>
+                    <li><a href="#how-it-works" class="nav-link"><span class="nav-link-text">Process</span></a></li>
+                    <li><a href="#pricing" class="nav-link"><span class="nav-link-text">Pricing</span></a></li>
+                    <li><a href="#faq" class="nav-link"><span class="nav-link-text">FAQ</span></a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-actions">
+                <a href="#booking" class="nav-cta">Book consult</a>
+                <button type="button" class="hamburger" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main">
+        <section class="hero hero--cinema" aria-labelledby="hero-heading">
+            <div class="hero-layers" aria-hidden="true">
+                <div class="hero-orb hero-orb--a"></div>
+                <div class="hero-orb hero-orb--b"></div>
+                <div class="hero-orb hero-orb--c"></div>
+                <div class="hero-noise"></div>
+                <div class="hero-grid-lines"></div>
+            </div>
+            <div id="three-container" class="three-canvas" aria-hidden="true"></div>
+            <div class="hero-models-config" hidden>
+                <div class="hero-model-instance" data-position="-6.8,3,-1" data-scale="0.5" data-phase="0.2" data-float-speed="1.1" data-rotate-speed="0.35"></div>
+                <div class="hero-model-instance" data-position="6.8,3,-1" data-scale="0.5" data-phase="1.6" data-float-speed="0.9" data-rotate-speed="0.35"></div>
+                <div class="hero-model-instance" data-position="-6.8,-2.7,-1" data-scale="0.5" data-phase="2.9" data-float-speed="1.25" data-rotate-speed="0.35"></div>
+                <div class="hero-model-instance" data-position="6.8,-2.7,-1" data-scale="0.5" data-phase="4.1" data-float-speed="1" data-rotate-speed="0.35"></div>
+            </div>
+
+            <div class="hero-split">
+                <div class="hero-col hero-col--copy">
+                    <p class="hero-eyebrow js-hero-fade">Math &amp; CS · Grades 1–12</p>
+                    <h1 id="hero-heading" class="hero-headline">
+                        <span class="hl-line"><span class="hl-line__inner">Tutoring that builds</span></span>
+                        <span class="hl-line hl-line--accent"><span class="hl-line__inner">lasting understanding</span></span>
+                        <span class="hl-line hl-line--muted"><span class="hl-line__inner">in math &amp; computer science.</span></span>
+                    </h1>
+                    <p class="hero-subtitle js-hero-fade">A compact team obsessed with foundations, exam readiness, and teaching that respects your time.</p>
+                    <div class="hero-actions js-hero-fade">
+                        <button type="button" class="cta-button primary-button" data-target="booking">
+                            <span class="cta-shine" aria-hidden="true"></span>
+                            <span>Book a free consult</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h10m0 0-3-3m3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <a href="#how-it-works" class="cta-button ghost-button">Process</a>
+                    </div>
+                </div>
+                <aside class="hero-bento" aria-label="At a glance">
+                    <div class="bento-card bento-card--stat js-bento" data-speed="0.04">
+                        <span class="bento-label">Track record</span>
+                        <span class="bento-value">95%+</span>
+                        <span class="bento-meta">AP math excellence</span>
+                    </div>
+                    <div class="bento-card bento-card--stat js-bento" data-speed="0.07">
+                        <span class="bento-label">Experience</span>
+                        <span class="bento-value">2+ yrs</span>
+                        <span class="bento-meta">Combined tutoring</span>
+                    </div>
+                    <div class="bento-card bento-card--wide js-bento" data-speed="0.05">
+                        <span class="bento-label">Rate</span>
+                        <span class="bento-value bento-value--lg">$19<span class="bento-suffix">/hr</span></span>
+                        <span class="bento-meta">One-on-one · no contracts</span>
+                    </div>
+                    <div class="bento-card bento-card--accent js-bento" data-speed="0.06">
+                        <span class="bento-accent-title">L2L Level 2</span>
+                        <span class="bento-accent-sub">Certified · punctual · curriculum-aligned</span>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="hero-marquee" aria-hidden="true">
+                <div class="marquee-inner">
+                    <div class="marquee-track">
+                        <span>Foundations</span><span aria-hidden="true">·</span>
+                        <span>AP readiness</span><span aria-hidden="true">·</span>
+                        <span>CS fundamentals</span><span aria-hidden="true">·</span>
+                        <span>1:1 sessions</span><span aria-hidden="true">·</span>
+                        <span>Diagnostic teaching</span><span aria-hidden="true">·</span>
+                        <span>Exam strategy</span><span aria-hidden="true">·</span>
+                    </div>
+                    <div class="marquee-track" aria-hidden="true">
+                        <span>Foundations</span><span>·</span>
+                        <span>AP readiness</span><span>·</span>
+                        <span>CS fundamentals</span><span>·</span>
+                        <span>1:1 sessions</span><span>·</span>
+                        <span>Diagnostic teaching</span><span>·</span>
+                        <span>Exam strategy</span><span>·</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator js-hero-fade">
+                <div class="scroll-line" aria-hidden="true"><span></span></div>
+                <p>Scroll</p>
+            </div>
+        </section>
+
+        <section id="about" class="about about--editorial">
+            <div class="section-container">
+                <div class="about-intro reveal-up">
+                    <span class="about-watermark" aria-hidden="true">01</span>
+                    <div class="about-intro-main">
+                        <p class="about-kicker">Why us</p>
+                        <h2 class="about-headline">Teaching that repairs the foundation—not just the grade.</h2>
+                        <p class="about-lead">We diagnose gaps, teach with precision, and build habits so math and CS stop feeling like guesswork.</p>
+                    </div>
+                    <aside class="about-aside">
+                        <div class="about-mark" title="Maple Math Academy">
+                            <img class="about-mark-img" src="images/logo.png" width="80" height="80" alt="">
+                        </div>
+                        <p class="about-pullquote">Foundations first. Always.</p>
+                        <ul class="about-pills" aria-label="Highlights">
+                            <li>L2L Level 2</li>
+                            <li>Curriculum-aligned</li>
+                            <li>Human explanations</li>
+                        </ul>
+                    </aside>
+                </div>
+
+                <div class="about-body reveal-up" style="--reveal-delay: 0.06s">
+                    <div class="about-body-copy">
+                        <h3 class="about-h3">Small team. High standards.</h3>
+                        <p>Our tutors combine classroom-aware pacing with patient coaching—so students understand <em>why</em> a method works, not only <em>what</em> to memorize.</p>
+                        <h3 class="about-h3">Philosophy</h3>
+                        <p>Math and CS reward structure. We map prerequisites, strengthen weak links, and practice deliberately until confidence shows up on homework, projects, and tests.</p>
+                    </div>
+                    <div class="about-credentials">
+                        <article class="credential-card">
+                            <span class="credential-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16V9"/><path d="M12 16v-5"/><path d="M16 16V7"/></svg></span>
+                            <h4>95%+ AP math excellence</h4>
+                            <p>Consistent depth in advanced coursework and exam-style thinking.</p>
+                        </article>
+                        <article class="credential-card">
+                            <span class="credential-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 3l7 4v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"/><path d="M9 12l2 2 4-5"/></svg></span>
+                            <h4>L2L Level 2 certified</h4>
+                            <p>Professional tutoring standards you can verify.</p>
+                        </article>
+                        <article class="credential-card">
+                            <span class="credential-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+                            <h4>Punctual &amp; prepared</h4>
+                            <p>Respect for your time with structured lesson flow.</p>
+                        </article>
+                        <article class="credential-card">
+                            <span class="credential-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 6h16"/><path d="M4 12h10"/><path d="M4 18h14"/><path d="M16 10l4 2-4 2"/></svg></span>
+                            <h4>Current curriculum</h4>
+                            <p>Aligned to what schools actually assign—plus CS fundamentals.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tutors" class="tutors tutors--roster section-rail section-muted">
+            <div class="section-container section-container--team">
+                <header class="section-header section-header--team">
+                    <p class="section-eyebrow">The team</p>
+                    <h2>People you’ll actually meet.</h2>
+                    <p class="section-lead">Same bar for clarity, prep, and follow-through—bios stay short because the work should do the talking.</p>
+                    <p class="team-roster-note">No rotating cast. Just us, every session.</p>
+                </header>
+
+                <ul class="team-roster">
+                    <li>
+                        <article class="team-row">
+                            <div class="team-row-photo">
+                                <figure class="team-row-figure">
+                                    <img
+                                        class="team-row-img"
+                                        src="images/team/Sami.png"
+                                        alt="Portrait of Sami, Maple Math Academy tutor"
+                                        width="720"
+                                        height="900"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </figure>
+                            </div>
+                            <div class="team-row-copy">
+                                <div class="team-row-copy-inner">
+                                    <span class="team-row-ix" aria-hidden="true">01</span>
+                                    <div class="team-row-text">
+                                        <p class="team-row-role">Math &amp; CS</p>
+                                        <h3 class="team-row-name">Sami</h3>
+                                        <p class="team-row-bio">Collaborative coaching for younger learners through early high school—algebra, coding basics, and exam prep with patient pacing.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="team-row team-row--flip">
+                            <div class="team-row-photo">
+                                <figure class="team-row-figure">
+                                    <img
+                                        class="team-row-img"
+                                        src="images/team/Moosa.png"
+                                        alt="Portrait of Moosa, Maple Math Academy tutor"
+                                        width="720"
+                                        height="900"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </figure>
+                            </div>
+                            <div class="team-row-copy">
+                                <div class="team-row-copy-inner">
+                                    <span class="team-row-ix" aria-hidden="true">02</span>
+                                    <div class="team-row-text">
+                                        <p class="team-row-role">Math &amp; CS</p>
+                                        <h3 class="team-row-name">Moosa</h3>
+                                        <p class="team-row-bio">Turns confusion into step-by-step clarity. Strong on targeted drills, debugging thinking, and rebuilding confidence under pressure.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="team-row">
+                            <div class="team-row-photo">
+                                <figure class="team-row-figure">
+                                    <img
+                                        class="team-row-img"
+                                        src="images/team/arhum.png"
+                                        alt="Portrait of Arhum, Maple Math Academy tutor"
+                                        width="720"
+                                        height="900"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </figure>
+                            </div>
+                            <div class="team-row-copy">
+                                <div class="team-row-copy-inner">
+                                    <span class="team-row-ix" aria-hidden="true">03</span>
+                                    <div class="team-row-text">
+                                        <p class="team-row-role">Foundations lead</p>
+                                        <h3 class="team-row-name">Arhum</h3>
+                                        <p class="team-row-bio">2+ years tutoring, L2L Level 2. Specializes in closing prerequisite gaps so harder topics finally “click.”</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <div class="section-container">
+                <header class="section-header">
+                    <p class="section-eyebrow">Process</p>
+                    <h2>How lessons actually run</h2>
+                    <p class="section-lead">A simple loop: diagnose, repair, build, reinforce.</p>
+                </header>
+
+                <ol class="process-steps">
+                    <li class="process-step">
+                        <span class="step-index">01</span>
+                        <div class="step-body">
+                            <h3>Diagnostic</h3>
+                            <p>We pinpoint where reasoning breaks—not just the latest homework problem.</p>
+                        </div>
+                        <span class="step-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+                    </li>
+                    <li class="process-step">
+                        <span class="step-index">02</span>
+                        <div class="step-body">
+                            <h3>Foundation repair</h3>
+                            <p>Short, explicit lessons on missing skills so new material has something solid to attach to.</p>
+                        </div>
+                        <span class="step-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-6"/><path d="M22 20V8"/></svg></span>
+                    </li>
+                    <li class="process-step">
+                        <span class="step-index">03</span>
+                        <div class="step-body">
+                            <h3>Skill building</h3>
+                            <p>Guided practice with immediate feedback—so good habits replace guessing.</p>
+                        </div>
+                        <span class="step-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 14l4-4 4 4 8-8"/><path d="M4 20h16"/></svg></span>
+                    </li>
+                    <li class="process-step">
+                        <span class="step-index">04</span>
+                        <div class="step-body">
+                            <h3>Reinforcement</h3>
+                            <p>Spiraled review and test strategy so progress survives the next quiz—not just the session.</p>
+                        </div>
+                        <span class="step-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg></span>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="subjects" class="subjects section-muted">
+            <div class="section-container">
+                <header class="section-header">
+                    <p class="section-eyebrow">Subjects</p>
+                    <h2>Math &amp; CS, stage by stage</h2>
+                    <p class="section-lead">How we split focus by band—aligned to typical school pacing and what exams actually ask.</p>
+                </header>
+
+                <div class="subject-bands" role="list">
+                    <article class="subject-band" role="listitem">
+                        <div class="subject-band-head">
+                            <h3 class="subject-band-title">Elementary &amp; middle school</h3>
+                            <span class="subject-band-pill">Grades 1–8</span>
+                        </div>
+                        <ul class="subject-band-list">
+                            <li>Number sense &amp; proportional reasoning</li>
+                            <li>Pre-algebra &amp; early equations</li>
+                            <li>Geometry basics</li>
+                            <li>Introductory programming concepts</li>
+                        </ul>
+                    </article>
+                    <article class="subject-band" role="listitem">
+                        <div class="subject-band-head">
+                            <h3 class="subject-band-title">High school algebra</h3>
+                            <span class="subject-band-pill">Grades 9–10</span>
+                        </div>
+                        <ul class="subject-band-list">
+                            <li>Algebra I &amp; II</li>
+                            <li>Functions &amp; graphs</li>
+                            <li>Systems &amp; quadratics</li>
+                            <li>Study skills for tests</li>
+                        </ul>
+                    </article>
+                    <article class="subject-band" role="listitem">
+                        <div class="subject-band-head">
+                            <h3 class="subject-band-title">Advanced &amp; CS</h3>
+                            <span class="subject-band-pill">Grades 10–12</span>
+                        </div>
+                        <ul class="subject-band-list">
+                            <li>Precalculus foundations</li>
+                            <li>AP Calculus prep</li>
+                            <li>Intro programming &amp; logic</li>
+                            <li>Exam strategy</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-improve" class="why-improve">
+            <div class="section-container">
+                <header class="section-header">
+                    <p class="section-eyebrow">Outcomes</p>
+                    <h2>Why students improve here</h2>
+                    <p class="section-lead">Less performance theater. More understanding, practice, and feedback.</p>
+                </header>
+
+                <div class="benefits-grid">
+                    <article class="benefit-card">
+                        <span class="benefit-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 4v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"/></svg></span>
+                        <h3>Personalized pacing</h3>
+                        <p>Lessons follow your gaps—not a generic worksheet packet.</p>
+                    </article>
+                    <article class="benefit-card">
+                        <span class="benefit-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg></span>
+                        <h3>Conceptual depth</h3>
+                        <p>We prioritize reasoning you can reuse—not tricks you forget overnight.</p>
+                    </article>
+                    <article class="benefit-card">
+                        <span class="benefit-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M4.93 19.07l1.41-1.41"/><path d="M17.66 6.34l1.41-1.41"/></svg></span>
+                        <h3>Targeted plans</h3>
+                        <p>We spend time where leverage is highest—no busywork on mastered topics.</p>
+                    </article>
+                    <article class="benefit-card">
+                        <span class="benefit-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+                        <h3>Momentum</h3>
+                        <p>Quick wins build confidence; confidence builds consistency.</p>
+                    </article>
+                    <article class="benefit-card">
+                        <span class="benefit-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
+                        <h3>Exam readiness</h3>
+                        <p>Timed practice, error analysis, and calm strategies for high-stakes days.</p>
+                    </article>
+                    <article class="benefit-card">
+                        <span class="benefit-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21a9 9 0 1 0-9-9"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></span>
+                        <h3>Confidence</h3>
+                        <p>Math anxiety shrinks when explanations land and practice pays off.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials section-muted">
+            <div class="section-container">
+                <header class="section-header">
+                    <p class="section-eyebrow">Proof</p>
+                    <h2>What families say</h2>
+                    <p class="section-lead">Real words from parents and students.</p>
+                </header>
+
+                <div class="testimonials-track">
+                    <figure class="testimonial-card">
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <blockquote class="testimonial-text">“Arhum is a very bright teacher who works well with children and teenagers. IB-level math with my kids—patient, flexible, and clear. Highly recommend.”</blockquote>
+                        <figcaption class="testimonial-author">
+                            <div class="author-avatar" aria-hidden="true">A</div>
+                            <div>
+                                <p class="author-name">Anila</p>
+                                <p class="author-role">Parent</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="testimonial-card">
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <blockquote class="testimonial-text">“Thorough understanding of complex math—explains it simply. Patient, kind, and determined to help.”</blockquote>
+                        <figcaption class="testimonial-author">
+                            <div class="author-avatar" aria-hidden="true">N</div>
+                            <div>
+                                <p class="author-name">Nawal</p>
+                                <p class="author-role">Reviewer</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="testimonial-card">
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <blockquote class="testimonial-text">“Very patient with kids and deep conceptual understanding.”</blockquote>
+                        <figcaption class="testimonial-author">
+                            <div class="author-avatar" aria-hidden="true">S</div>
+                            <div>
+                                <p class="author-name">Saud</p>
+                                <p class="author-role">Reviewer</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="testimonial-card">
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <blockquote class="testimonial-text">“Very knowledgeable.”</blockquote>
+                        <figcaption class="testimonial-author">
+                            <div class="author-avatar" aria-hidden="true">E</div>
+                            <div>
+                                <p class="author-name">Esta</p>
+                                <p class="author-role">Parent</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing section-rail">
+            <div class="section-container">
+                <header class="section-header">
+                    <p class="section-eyebrow">Pricing</p>
+                    <h2>Simple. Transparent.</h2>
+                    <p class="section-lead">One-on-one sessions at a rate that respects families.</p>
+                </header>
+
+                <div class="pricing-layout">
+                    <div class="pricing-card primary">
+                        <div class="pricing-badge">Most booked</div>
+                        <h3>1:1 tutoring</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">19</span>
+                            <span class="period">/hour</span>
+                        </div>
+                        <p class="pricing-description">Personalized instruction in math and/or computer science.</p>
+                        <ul class="pricing-features">
+                            <li>Custom lesson plans</li>
+                            <li>Flexible scheduling</li>
+                            <li>Progress checkpoints</li>
+                            <li>All listed grade bands</li>
+                            <li>Free 15-minute consult</li>
+                            <li>Exam preparation support</li>
+                        </ul>
+                        <button type="button" class="cta-button secondary-button pricing-cta" data-target="booking">Book now</button>
+                    </div>
+                    <aside class="pricing-aside">
+                        <h3>Start with a consult</h3>
+                        <p>15 minutes, no pressure—just goals, schedule, and a clear next step.</p>
+                        <ul class="aside-list">
+                            <li>We reply within 24 hours</li>
+                            <li>No contracts</li>
+                            <li>First lesson satisfaction focus</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq section-muted">
+            <div class="section-container">
+                <header class="section-header">
+                    <p class="section-eyebrow">FAQ</p>
+                    <h2>Questions, answered</h2>
+                    <p class="section-lead">If you do not see it here, ask in your booking note.</p>
+                </header>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            <span>How do I schedule my first lesson?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" hidden>
+                            <p>Use the booking form with your grade and topic. We will follow up within 24 hours to confirm a free consult time.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            <span>What if I am not satisfied after the first lesson?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" hidden>
+                            <p>We want lessons to feel worthwhile. If your first session is not a fit, reach out—we will make it right.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            <span>How do cancellations work?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" hidden>
+                            <p>Let us know at least 24 hours ahead and we will reschedule with no penalty whenever possible.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            <span>Which subjects do you cover?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" hidden>
+                            <p>Grades 1–8 math, high school algebra, geometry, precalculus, AP Calculus prep, and introductory computer science.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            <span>How fast will grades improve?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" hidden>
+                            <p>Many students notice shifts within a few weeks with consistent sessions—exact timelines depend on starting point and practice between lessons.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            <span>Do you offer group sessions?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" hidden>
+                            <p>We focus on one-on-one tutoring for maximum personalization. Ask if you have a unique situation—we can discuss options.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking" class="booking">
+            <div class="section-container">
+                <header class="section-header">
+                    <p class="section-eyebrow">Booking</p>
+                    <h2>Request a consult</h2>
+                    <p class="section-lead">Tell us what you are working toward—we will take it from there.</p>
+                </header>
+
+                <div class="booking-shell reveal-up">
+                    <form
+                        id="booking-form"
+                        class="booking-form"
+                        method="POST"
+                        action="#"
+                        data-booking-email="alammoosa07@gmail.com"
+                    >
+                        <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+                        <div class="form-group">
+                            <label for="name">Full name <abbr title="required">*</abbr></label>
+                            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Alex Johnson">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email <abbr title="required">*</abbr></label>
+                            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone <span class="label-hint">optional</span></label>
+                            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="grade">Grade band <abbr title="required">*</abbr></label>
+                                <select id="grade" name="grade" required>
+                                    <option value="">Select…</option>
+                                    <option value="6th-8th">Middle School (6–8)</option>
+                                    <option value="9th-10th">High School Algebra (9–10)</option>
+                                    <option value="11th-12th">Advanced Math (11–12)</option>
+                                    <option value="ap">AP Math Focus</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="topic">Topic <abbr title="required">*</abbr></label>
+                                <input type="text" id="topic" name="topic" required placeholder="e.g. factoring, integrals, Python">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Context <span class="label-hint">optional</span></label>
+                            <textarea id="message" name="message" rows="4" placeholder="Goals, timeline, school course name…"></textarea>
+                        </div>
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">I agree to be contacted about this inquiry.</label>
+                        </div>
+                        <button type="submit" class="cta-button primary-button full-width">
+                            <span>Send request</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h10m0 0-3-3m3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <p class="form-note">We typically respond within 24 hours.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo logo--footer">
+                        <span class="logo-mark">
+                            <img class="logo-img" src="images/logo.png" width="112" height="112" alt="" decoding="async">
+                        </span>
+                        <span class="logo-text">Maple Math Academy</span>
+                    </a>
+                    <p>Collaborative math &amp; CS tutoring—structured lessons, honest feedback, steady progress.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#tutors">Tutors</a></li>
+                        <li><a href="#subjects">Subjects</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#how-it-works">Process</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#booking">Book consult</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p class="footer-note">Prefer email? Include it in the form— that is the fastest way to reach the team.</p>
+                    <a class="footer-cta" href="#booking">Open booking form</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="year"></span> Maple Math Academy. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="script.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
