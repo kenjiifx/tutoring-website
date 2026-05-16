@@ -5,18 +5,33 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 const NAV_SCROLL_CLASS = 'is-scrolled';
 const NAV = () => document.getElementById('site-nav');
 const NAV_OFFSET = 84;
+const MOBILE_MQ = window.matchMedia('(max-width: 768px)');
 
 let scene, camera, renderer, particles, controls;
 const clock = new THREE.Clock();
 const heroModels = [];
+let threeActive = true;
+
+function isMobileViewport() {
+    return MOBILE_MQ.matches;
+}
+
+function applyViewportClasses() {
+    if (!document.body) return;
+    document.body.classList.toggle('is-mobile', isMobileViewport());
+}
 
 function initThreeJS() {
+    if (isMobileViewport()) return;
+
     const container = document.getElementById('three-container');
     if (!container) return;
 
+    const lite = document.body.classList.contains('low-performance');
+
     scene = new THREE.Scene();
     scene.background = null;
-    scene.fog = new THREE.FogExp2(0x050508, 0.038);
+    if (!lite) scene.fog = new THREE.FogExp2(0x050508, 0.038);
 
     const width = container.clientWidth;
     const height = container.clientHeight;
@@ -24,13 +39,13 @@ function initThreeJS() {
     camera.position.set(0, 0.2, 8);
 
     renderer = new THREE.WebGLRenderer({
-        antialias: true,
+        antialias: !lite,
         alpha: true,
         precision: 'mediump',
         powerPreference: 'high-performance'
     });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(lite ? 1 : Math.min(window.devicePixelRatio, 1.5));
     renderer.setClearColor(0x000000, 0);
     renderer.shadowMap.enabled = false;
     container.appendChild(renderer.domElement);
@@ -43,8 +58,20 @@ function initThreeJS() {
     controls.target.set(0, 0, 0);
 
     addHeroLights();
-    createParticleBackground();
-    loadGraduationModels();
+    createParticleBackground(lite);
+    if (!lite) loadGraduationModels();
+
+    const heroIo = new IntersectionObserver(
+        ([entry]) => {
+            threeActive = Boolean(entry?.isIntersecting);
+        },
+        { root: null, threshold: 0, rootMargin: '80px 0px' }
+    );
+    heroIo.observe(container);
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) threeActive = false;
+    });
 
     window.addEventListener('resize', onWindowResize);
     animate();
@@ -129,8 +156,8 @@ function centerModel(model) {
     return wrapper;
 }
 
-function createParticleBackground() {
-    const particleCount = window.innerWidth > 768 ? 900 : 420;
+function createParticleBackground(lite = false) {
+    const particleCount = lite ? 180 : 700;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
@@ -166,6 +193,9 @@ let mouseY = 0;
 
 function animate() {
     requestAnimationFrame(animate);
+
+    if (!threeActive || !renderer) return;
+
     const elapsed = clock.getElapsedTime();
 
     if (particles) {
@@ -213,8 +243,12 @@ function onWindowResize() {
     renderer.setSize(width, height);
 }
 
+applyViewportClasses();
+MOBILE_MQ.addEventListener('change', applyViewportClasses);
+
 document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(initThreeJS, 80);
+    applyViewportClasses();
+    if (!isMobileViewport()) setTimeout(initThreeJS, 80);
 });
 
 const observerOptions = { threshold: 0.12, rootMargin: '0px 0px -8% 0px' };
@@ -443,10 +477,26 @@ function updateNavbar() {
     else nav.classList.remove(NAV_SCROLL_CLASS);
 }
 
-window.addEventListener('scroll', updateNavbar, { passive: true });
+let navScrollScheduled = false;
+window.addEventListener(
+    'scroll',
+    () => {
+        if (navScrollScheduled) return;
+        navScrollScheduled = true;
+        requestAnimationFrame(() => {
+            updateNavbar();
+            navScrollScheduled = false;
+        });
+    },
+    { passive: true }
+);
 document.addEventListener('DOMContentLoaded', updateNavbar);
 
 function detectPerformance() {
+    if (isMobileViewport()) {
+        document.body.classList.add('low-performance');
+        return;
+    }
     const canvas = document.createElement('canvas');
     const gl = canvas.getContext('webgl');
     if (!gl) return;
@@ -460,7 +510,8 @@ function detectPerformance() {
 }
 
 try {
-    detectPerformance();
+    if (document.body) detectPerformance();
+    else document.addEventListener('DOMContentLoaded', detectPerformance);
 } catch {
     /* ignore */
 }
@@ -478,7 +529,16 @@ window.addEventListener('hashchange', handleHashNavigation);
 document.addEventListener('DOMContentLoaded', handleHashNavigation);
 
 function isLowPerformanceDevice() {
-    return document.body.classList.contains('low-performance');
+    return document.body.classList.contains('low-performance') || isMobileViewport();
+}
+
+function initMobileHeroIntro(gsap) {
+    gsap.set('.js-hero-fade', { opacity: 0, y: 18 });
+    gsap.set('.hl-line__inner', { yPercent: 105 });
+    gsap
+        .timeline({ defaults: { ease: 'power3.out' }, delay: 0.05 })
+        .to('.hl-line__inner', { yPercent: 0, duration: 0.75, stagger: 0.07 })
+        .to('.js-hero-fade', { opacity: 1, y: 0, duration: 0.55, stagger: 0.04 }, '-=0.35');
 }
 
 function initScrollProgressBar(ScrollTrigger, lenis) {
@@ -706,11 +766,12 @@ function initMotion() {
     gsap.registerPlugin(ScrollTrigger);
 
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mobile = isMobileViewport();
     const low = isLowPerformanceDevice();
 
     let lenis = null;
 
-    if (!prefersReduced && typeof Lenis !== 'undefined') {
+    if (!prefersReduced && !mobile && typeof Lenis !== 'undefined') {
         lenis = new Lenis({ duration: 1.12, smoothWheel: true });
         window.lenisInstance = lenis;
         lenis.on('scroll', ScrollTrigger.update);
@@ -742,10 +803,20 @@ function initMotion() {
         requestAnimationFrame(raf);
     }
 
-    initScrollProgressBar(ScrollTrigger, lenis);
+    if (mobile) {
+        initNativeScrollProgress();
+    } else {
+        initScrollProgressBar(ScrollTrigger, lenis);
+    }
 
     if (prefersReduced) {
         initRevealFallback();
+        return;
+    }
+
+    if (mobile) {
+        initRevealFallback();
+        initMobileHeroIntro(gsap);
         return;
     }
 
@@ -794,10 +865,13 @@ function initMotion() {
     });
 
     requestAnimationFrame(() => ScrollTrigger.refresh());
+
+    let resizeTimer;
     window.addEventListener(
         'resize',
         () => {
-            ScrollTrigger.refresh();
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => ScrollTrigger.refresh(), 200);
         },
         { passive: true }
     );
