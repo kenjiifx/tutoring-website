@@ -1894,6 +1894,18 @@ body.nav-open .nav-center {
     background: var(--surface);
 }
 
+.form-honey {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .booking-shell {
     max-width: 560px;
     margin: 0 auto;

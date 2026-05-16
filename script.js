@@ -365,14 +365,45 @@ document.querySelectorAll('.faq-item').forEach((item) => {
 
 const bookingForm = document.getElementById('booking-form');
 
+function getFormspreeEndpoint(form) {
+    const id = form.dataset.formspree?.trim();
+    if (id) return `https://formspree.io/f/${id}`;
+    const action = form.getAttribute('action') || '';
+    if (action.includes('formspree.io')) return action;
+    return 'https://formspree.io/f/xnjwbzad';
+}
+
+function parseFormspreeError(payload, status) {
+    if (payload?.error) return String(payload.error);
+    if (Array.isArray(payload?.errors) && payload.errors.length) {
+        return payload.errors.map((e) => e.message || e.field).filter(Boolean).join(' ');
+    }
+    if (status === 404) return 'Form not found. Check the Formspree form ID in index.html.';
+    if (status === 429) return 'Too many requests. Wait a minute and try again.';
+    return 'Submission failed. Please try again.';
+}
+
 if (bookingForm) {
+    const emailInput = bookingForm.querySelector('#email');
+    const replyToHidden = bookingForm.querySelector('#form-replyto');
+
+    if (emailInput && replyToHidden) {
+        emailInput.addEventListener('input', () => {
+            replyToHidden.value = emailInput.value.trim();
+        });
+    }
+
     bookingForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const formData = new FormData(bookingForm);
-        const data = Object.fromEntries(formData);
+        const name = bookingForm.elements.name?.value?.trim();
+        const email = bookingForm.elements.email?.value?.trim();
+        const phone = bookingForm.elements.phone?.value?.trim();
+        const grade = bookingForm.elements.grade?.value?.trim();
+        const topic = bookingForm.elements.topic?.value?.trim();
+        const message = bookingForm.elements.message?.value?.trim();
 
-        if (!data.name || !data.email || !data.grade || !data.topic) {
+        if (!name || !email || !grade || !topic) {
             showNotification('Please fill in all required fields.', 'error');
             return;
         }
@@ -383,37 +414,67 @@ if (bookingForm) {
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(data.email)) {
+        if (!emailRegex.test(email)) {
             showNotification('Please enter a valid email address.', 'error');
             return;
         }
 
-        formData.append('_subject', 'MAS Math & Computing Academy — booking request');
+        if (replyToHidden) replyToHidden.value = email;
+
+        const payload = {
+            name,
+            email,
+            phone: phone || '(not provided)',
+            grade,
+            topic,
+            message: message || '(not provided)',
+            _subject: 'MAS Math & Computing Academy — booking request',
+            _replyto: email
+        };
 
         const submitButton = bookingForm.querySelector('button[type="submit"]');
         const label = submitButton?.querySelector('span');
         const prev = label ? label.textContent : submitButton.textContent;
+        const endpoint = getFormspreeEndpoint(bookingForm);
 
         try {
             submitButton.disabled = true;
             if (label) label.textContent = 'Sending…';
             else submitButton.textContent = 'Sending…';
 
-            const response = await fetch('https://formspree.io/f/xnjwbzad', {
+            const response = await fetch(endpoint, {
                 method: 'POST',
-                headers: { Accept: 'application/json' },
-                body: formData
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
             });
 
-            if (response.ok) {
-                showNotification("Thanks — we'll reply within 24 hours.", 'success');
+            let result = {};
+            try {
+                result = await response.json();
+            } catch {
+                result = {};
+            }
+
+            const accepted = response.ok && result.ok !== false;
+
+            if (accepted) {
+                showNotification("Thanks — we got your request. We'll reply within 24 hours.", 'success');
                 bookingForm.reset();
+                if (replyToHidden) replyToHidden.value = '';
             } else {
-                showNotification('Submission failed. Please try again.', 'error');
+                const msg = parseFormspreeError(result, response.status);
+                console.error('Formspree error:', response.status, result);
+                showNotification(msg, 'error');
             }
         } catch (err) {
             console.error(err);
-            showNotification('Network error. Please try again.', 'error');
+            showNotification(
+                'Could not reach the form server. Use a live URL (not file://) or try again.',
+                'error'
+            );
         } finally {
             submitButton.disabled = false;
             if (label) label.textContent = prev;
