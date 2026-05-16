@@ -1,4 +1,4 @@
-/* Maple Math Academy — full redesign (studio / editorial) */
+/* MAS Math & Computing Academy — full redesign (studio / editorial) */
 
 :root {
     --bg: #f0eeeb;
@@ -1843,18 +1843,6 @@ body.nav-open .nav-center {
 .booking {
     padding: clamp(4rem, 10vw, 6.5rem) 0;
     background: var(--surface);
-}
-
-.form-honey {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
 }
 
 .booking-shell {

@@ -335,15 +335,6 @@ if (bookingForm) {
     bookingForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const bookingEmail = bookingForm.dataset.bookingEmail?.trim();
-        if (!bookingEmail || bookingEmail.toLowerCase().includes('replace_with_your_email')) {
-            showNotification(
-                'Set your inbox on the form: edit data-booking-email in index.html (no API keys needed).',
-                'error'
-            );
-            return;
-        }
-
         const formData = new FormData(bookingForm);
         const data = Object.fromEntries(formData);
 
@@ -363,9 +354,7 @@ if (bookingForm) {
             return;
         }
 
-        formData.append('_subject', 'Maple Math Academy — booking request');
-        formData.append('_template', 'table');
-        formData.append('_captcha', 'false');
+        formData.append('_subject', 'MAS Math & Computing Academy — booking request');
 
         const submitButton = bookingForm.querySelector('button[type="submit"]');
         const label = submitButton?.querySelector('span');
@@ -376,39 +365,21 @@ if (bookingForm) {
             if (label) label.textContent = 'Sending…';
             else submitButton.textContent = 'Sending…';
 
-            const endpoint = `https://formsubmit.co/ajax/${encodeURIComponent(bookingEmail)}`;
-            const response = await fetch(endpoint, {
+            const response = await fetch('https://formspree.io/f/xnjwbzad', {
                 method: 'POST',
-                body: formData,
-                headers: { Accept: 'application/json' }
+                headers: { Accept: 'application/json' },
+                body: formData
             });
 
-            let payload = {};
-            try {
-                payload = await response.json();
-            } catch {
-                payload = {};
-            }
-
-            const succeeded =
-                response.ok &&
-                (payload.success === true ||
-                    payload.success === 'true' ||
-                    payload.ok === true ||
-                    payload.ok === 'true');
-
-            if (succeeded) {
+            if (response.ok) {
                 showNotification("Thanks — we'll reply within 24 hours.", 'success');
                 bookingForm.reset();
             } else {
-                const msg =
-                    (typeof payload.message === 'string' && payload.message) ||
-                    (response.ok ? 'Could not confirm delivery. Try again in a moment.' : 'Submission failed. Try again.');
-                showNotification(msg, 'error');
+                showNotification('Submission failed. Please try again.', 'error');
             }
         } catch (err) {
             console.error(err);
-            showNotification('Network error. Serve this site over http(s) (not file://) and try again.', 'error');
+            showNotification('Network error. Please try again.', 'error');
         } finally {
             submitButton.disabled = false;
             if (label) label.textContent = prev;
