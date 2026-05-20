@@ -1980,6 +1980,34 @@ body.nav-open .nav-center {
     accent-color: var(--teal);
 }
 
+/* Alternative contact block in booking section */
+.contact-alternative {
+    margin-top: 0.85rem;
+    padding: 0.9rem;
+    border-radius: 12px;
+    background: linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--surface) 94%, transparent));
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.95rem;
+    box-shadow: 0 8px 28px rgba(20, 19, 18, 0.04);
+}
+
+.contact-alternative strong {
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.contact-alternative a {
+    color: var(--teal);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.contact-alternative a:hover {
+    color: var(--teal-hover);
+    text-decoration: underline;
+}
+
 .form-group.checkbox label {
     margin: 0;
     font-weight: 500;
