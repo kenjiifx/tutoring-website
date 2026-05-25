@@ -948,7 +948,7 @@ body.nav-open .nav-center {
 /* ---------- Sections ---------- */
 .section-container {
     max-width: var(--max);
-    margin: 1.4rem auto;
+    margin: 5.5rem auto;
     padding: 0 1.35rem;
 }
 
