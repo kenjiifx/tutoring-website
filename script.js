@@ -266,17 +266,10 @@ function initRevealFallback() {
 }
 
 function bindNavHero() {
-    const hero = document.querySelector('.hero--cinema');
     const nav = NAV();
-    if (!hero || !nav) return;
-    const io = new IntersectionObserver(
-        ([entry]) => {
-            if (!entry) return;
-            nav.classList.toggle('nav-over-hero', entry.isIntersecting);
-        },
-        { threshold: [0, 0.06], rootMargin: '-52px 0px 0px 0px' }
-    );
-    io.observe(hero);
+    if (!nav) return;
+    nav.classList.remove('nav-over-hero');
+    nav.classList.add(NAV_SCROLL_CLASS);
 }
 
 function scrollToSection(target) {
@@ -534,8 +527,7 @@ document.querySelectorAll('[data-target]').forEach((button) => {
 function updateNavbar() {
     const nav = NAV();
     if (!nav) return;
-    if (window.scrollY > 24) nav.classList.add(NAV_SCROLL_CLASS);
-    else nav.classList.remove(NAV_SCROLL_CLASS);
+    nav.classList.add(NAV_SCROLL_CLASS);
 }
 
 let navScrollScheduled = false;

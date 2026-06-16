@@ -25,7 +25,7 @@
     </div>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <nav class="navbar nav-over-hero" id="site-nav" aria-label="Primary">
+    <nav class="navbar" id="site-nav" aria-label="Primary">
         <div class="navbar-container">
             <a href="#" class="logo" aria-label="MAS Math & Computing Academy home">
                 <span class="logo-mark">
@@ -46,6 +46,10 @@
             </div>
 
             <div class="navbar-actions">
+                <div class="nav-contact">
+                    <a href="mailto:arhumfaysal07@gmail.com" class="nav-contact-link">arhumfaysal07@gmail.com</a>
+                    <a href="tel:+14372595042" class="nav-contact-link">+1 437-259-5042</a>
+                </div>
                 <a href="#booking" class="nav-cta">Book consult</a>
                 <button type="button" class="hamburger" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
                     <span></span>
@@ -77,19 +81,33 @@
                 <div class="hero-col hero-col--copy">
                     <p class="hero-eyebrow js-hero-fade">Math &amp; CS · Grades 1–12</p>
                     <h1 id="hero-heading" class="hero-headline">
-                        <span class="hl-line"><span class="hl-line__inner">MASter Math & Computer Science principles</span></span>
-                        <span class="hl-line hl-line--accent"><span class="hl-line__inner">with lasting understanding</span></span>
-                        <span class="hl-line hl-line--muted"><span class="hl-line__inner">at the MAS Academy.</span></span>
+                        <span class="hl-line hl-line--muted"><span class="hl-line__inner-black">Online and in-person math & CS tutoring</span></span>
+                        <span class="hl-line hl-line--accent"><span class="hl-line__inner">for Grades 1-12</span></span>
+                        <span class="hl-line hl-line--muted"><span class="hl-line__inner-black">in Milton, Ontario and across the GTA</span></span>
                     </h1>
-                    <p class="hero-subtitle js-hero-fade">A compact team obsessed with foundations, exam readiness, and teaching that respects your time.</p>
+                    <p class="hero-subtitle js-hero-fade">MASTER math and CS principles with a team obsessed with foundations, exam readiness, and teaching that respects your time.</p>
                     <div class="hero-actions js-hero-fade">
-                        <button type="button" class="cta-button primary-button" data-target="booking">
+                        <!-- <button type="button" class="cta-button primary-button" data-target="booking">
                             <span class="cta-shine" aria-hidden="true"></span>
-                            <span>Book a free consult</span>
+                            <span>Book a detailed consult</span>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h10m0 0-3-3m3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </button>
+                        </button> -->
                         <a href="#how-it-works" class="cta-button ghost-button">Process</a>
                     </div>
+                    <!-- Quick contact form (short) -->
+                    <form id="quick-contact" class="quick-contact" action="https://formspree.io/f/xnjwbzad" method="POST">
+                        <input type="hidden" name="_replyto" value="">
+                        <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+                        <div class="quick-row">
+                            <input type="text" name="name" placeholder="Parent name" required>
+                            <input type="email" name="email" placeholder="Parent email" required>
+                        </div>
+                        <div class="quick-row">
+                            <input type="text" name="grade" placeholder="Student grade" required>
+                            <input type="text" name="topic" placeholder="Subject / topic" required>
+                        </div>
+                        <button type="submit" class="cta-button primary-button quick-submit">Request consult</button>
+                    </form>
                 </div>
                 <aside class="hero-bento" aria-label="At a glance">
                     <div class="bento-card bento-card--stat js-bento" data-speed="0.04">
@@ -294,7 +312,7 @@
         <section id="how-it-works" class="how-it-works">
             <div class="section-container">
                 <header class="section-header">
-                    <p class="section-eyebrow">Process</p>
+                    <p class="section-eyebrow" style="color:black;">Process</p>
                     <h2>How lessons actually run</h2>
                     <p class="section-lead">A simple loop: diagnose, repair, build, reinforce.</p>
                 </header>
@@ -389,7 +407,7 @@
             <div class="section-container">
                 <header class="section-header">
                     <p class="section-eyebrow">Outcomes</p>
-                    <h2>Why students improve here</h2>
+                    <h2>Why students improve <span class="accent-here">here</span></h2>
                     <p class="section-lead">Less performance theater. More understanding, practice, and feedback.</p>
                 </header>
 
